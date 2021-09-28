@@ -7,9 +7,10 @@ import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
 
 export default function CreateApp() {
-  const [contacts, setContacts] = useState(
-    JSON.parse(window.localStorage.getItem('contacts') ?? ''),
-  );
+  // const [contacts, setContacts] = useState(
+  //   JSON.parse(window.localStorage.getItem('contacts') ?? []),
+  // );
+  const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
   const formSubmitHandler = data => {
@@ -43,6 +44,11 @@ export default function CreateApp() {
   const deleteContact = contactId => {
     setContacts(contacts.filter(contact => contact.id !== contactId));
   };
+
+  useEffect(() => {
+    const savedContacts = JSON.parse(window.localStorage.getItem('contacts'));
+    savedContacts && setContacts(savedContacts);
+  }, []);
 
   useEffect(() => {
     window.localStorage.setItem('contacts', JSON.stringify(contacts));
