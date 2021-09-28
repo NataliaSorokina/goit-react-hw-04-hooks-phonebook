@@ -8,7 +8,7 @@ import Filter from 'components/Filter/Filter';
 
 export default function CreateApp() {
   const [contacts, setContacts] = useState(
-    JSON.parse(window.localStorage.getItem('contacts') ?? []),
+    JSON.parse(window.localStorage.getItem('contacts') ?? ''),
   );
   const [filter, setFilter] = useState('');
 
