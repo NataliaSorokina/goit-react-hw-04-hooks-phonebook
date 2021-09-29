@@ -25,7 +25,7 @@ export default function CreateApp() {
       alert(`${newContact.name} is already in contacts`);
       return;
     } else {
-      setContacts([...contacts, newContact]);
+      setContacts(prevState => [...prevState, newContact]);
     }
   };
 
